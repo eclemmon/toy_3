@@ -1,6 +1,9 @@
 #!/usr/bin/env python3
 
-"""Server for multithreaded (asynchronous) chat application."""
+"""
+Server for multithreaded (asynchronous) chat application.
+"""
+
 from socket import AF_INET, socket, SOCK_STREAM, gethostbyname, getfqdn
 from threading import Thread
 from multiprocessing import Process, Pool
@@ -10,7 +13,10 @@ import time
 
 
 def accept_incoming_connections():
-    """Sets up handling for incoming clients."""
+    """
+    Sets up handling for incoming clients
+    :return:
+    """
     while True:
         client, client_address = SERVER.accept()
         print("%s:%s has connected." % client_address)
@@ -19,8 +25,11 @@ def accept_incoming_connections():
         Thread(target=handle_client, args=(client,)).start()
 
 def handle_client(client):  # Takes client socket as argument.
-    """Handles a single client connection."""
-
+    """
+    Handles a single client connection.
+    :param client: Takes client socket as argument
+    :return:
+    """
     name = client.recv(BUFSIZ).decode("utf8")
     welcome = 'Welcome %s! If you ever want to quit, type {quit} to exit.' % name
     client.send(bytes(welcome, "utf8"))
@@ -43,8 +52,12 @@ def handle_client(client):  # Takes client socket as argument.
             message_water.out()
             print("Message: ", msg.decode("utf-8"))
 
-def broadcast(msg, prefix=""):  # prefix is for name identification.
-    """Broadcasts a message to all the clients."""
+def broadcast(msg, prefix=""):
+    """
+    Broadcasts the name and text as a formatted string to all clients.
+    :param msg: The message to be broadcast to all clients.
+    :param prefix: The prefix is the name of the client who sent the original messagee.
+    """
     for sock in clients:
         sock.send(bytes(prefix, "utf8")+msg)
 
@@ -74,9 +87,6 @@ if __name__ == "__main__":
     s.start()
     ACCEPT_THREAD = Thread(target=accept_incoming_connections)
     ACCEPT_THREAD.start()
-#    MAIN_TRACK = Thread(target=main_backingtrack())
-#    MAIN_TRACK.start()
-#    MAIN_TRACK.join()
     ACCEPT_THREAD.join()
     SERVER.close()
     s.stop()

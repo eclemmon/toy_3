@@ -3,11 +3,21 @@ import time
 from threading import Thread
 import random
 
-water_drop_sf = "/Users/ericlemmon/Google Drive/My Projects/Music Projects/Toy7/Toy3-Samples/Water-Drop.wav"
+# Chat Server/Music Handler inserts path to water drop sample here.
+water_drop_sf = "SAMPLE_PATH"
 
 
 class Water_Drop(object):
+    """
+    This water drop object acts as a constructor for a simple, text-based granulation and panning object.
+    It is designed to be constructed and controlled by messages sent to the chat client.
+    """
     def __init__(self, message, soundfile):
+        """
+
+        :param message:
+        :param soundfile:
+        """
         self.message_len = len(message)
         self.message = message
         self.drop_sound_list = []
@@ -15,7 +25,6 @@ class Water_Drop(object):
         for i in range(len(self.message.split())):
             fader = self.fader
             speed=random.uniform(0.25, 1.25)
-            print(speed)
             drop_sound = SfPlayer(soundfile, speed=speed, loop=False, mul=fader)
             reverb = STRev(drop_sound, inpos=random.random(), revtime=0.5, bal=0.5, roomSize=random.random()*4, mul=fader)
             self.drop_sound_list.append([fader, drop_sound, reverb, reverb.revtime])
@@ -25,7 +34,6 @@ class Water_Drop(object):
         for i in range(len(self.drop_sound_list)):
             print(i, self.drop_sound_list[i], self.drop_sound_list[i][3])
             self.drop_sound_list[i][1].out()
-#            self.drop_sound_list[i][2].out()
             self.drop_sound_list[i][0].play()
             time.sleep(self.drop_sound_list[i][3]+.1)
             self.drop_sound_list[i][0].stop()

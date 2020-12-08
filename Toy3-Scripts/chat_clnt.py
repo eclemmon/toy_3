@@ -1,12 +1,16 @@
 #!/usr/bin/env python3
-"""Script for Tkinter GUI chat client."""
+"""
+This program builds a simple chat client from the  Tkinter GUI.
+"""
 from socket import AF_INET, socket, SOCK_STREAM
 from threading import Thread
 import tkinter
 from tkinter import scrolledtext
 
 def receive():
-    """Handles receiving of messages."""
+    """
+    This function handles the receiving of messages in the chat server.
+    """
     while True:
         try:
             msg = client_socket.recv(BUFSIZ).decode("utf8")
@@ -16,7 +20,10 @@ def receive():
 
 
 def send(event=None):  # event is passed by binders.
-    """Handles sending of messages."""
+    """
+    This function handles the sending of messages in the chat server.
+    :param event:
+    """
     msg = my_msg.get()
     my_msg.set("")  # Clears input field.
     client_socket.send(bytes(msg, "utf8"))
@@ -26,7 +33,10 @@ def send(event=None):  # event is passed by binders.
 
 
 def on_closing(event=None):
-    """This function is to be called when the window is closed."""
+    """
+    Sends a commend to close connection to client on call.
+    :param event: When command to quit is called.
+    """""
     my_msg.set("{quit}")
     send()
 
