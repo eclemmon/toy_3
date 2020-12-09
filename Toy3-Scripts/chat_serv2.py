@@ -6,8 +6,8 @@ Server for multithreaded (asynchronous) chat application.
 
 from socket import AF_INET, socket, SOCK_STREAM, gethostbyname, getfqdn
 from threading import Thread
-from Music_Handler3 import *
-from Water_Drop import *
+from music_handler import *
+from water_drop import *
 import pyo
 import time
 
@@ -28,7 +28,6 @@ def handle_client(client):  # Takes client socket as argument.
     """
     Handles a single client connection.
     :param client: Takes client socket as argument
-    :return:
     """
     name = client.recv(BUFSIZ).decode("utf8")
     welcome = 'Welcome %s! If you ever want to quit, type {quit} to exit.' % name

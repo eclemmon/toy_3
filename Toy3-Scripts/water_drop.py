@@ -3,6 +3,10 @@
 Water drop class
 """
 
+from pyo import *
+import time
+import random
+import frequency_lists
 
 # Chat Server/Music Handler inserts path to water drop sample here.
 # water_drop_sf = "SAMPLE_PATH"
