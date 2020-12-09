@@ -5,7 +5,6 @@ This program builds a simple chat client from the  Tkinter GUI.
 from socket import AF_INET, socket, SOCK_STREAM
 from threading import Thread
 import tkinter
-from tkinter import scrolledtext
 
 def receive():
     """

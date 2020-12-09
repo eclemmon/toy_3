@@ -1,100 +1,12 @@
 from pyo import *
+from frequency_lists import *
 import time
-from threading import Thread
 import random
 
-# Chat Server/Music Handler inserts path to water drop sample here.
-water_drop_sf = "SAMPLE_PATH"
+lfo = Sine(.2, 0, .075, .075)
+lfo2 = Sine(.1, 0, .075, .075)
 
-
-class Water_Drop(object):
-    """
-    This water drop object acts as a constructor for a simple, text-based granulation and panning object.
-    It is designed to be constructed and controlled by messages sent to the chat client.
-    """
-    def __init__(self, message, soundfile):
-        """
-
-        :param message:
-        :param soundfile:
-        """
-        self.message_len = len(message)
-        self.message = message
-        self.drop_sound_list = []
-        self.fader = Fader(fadein=0.2, fadeout=0.1, mul=1)
-        for i in range(len(self.message.split())):
-            fader = self.fader
-            speed=random.uniform(0.25, 1.25)
-            drop_sound = SfPlayer(soundfile, speed=speed, loop=False, mul=fader)
-            reverb = STRev(drop_sound, inpos=random.random(), revtime=0.5, bal=0.5, roomSize=random.random()*4, mul=fader)
-            self.drop_sound_list.append([fader, drop_sound, reverb, reverb.revtime])
-        print(self.drop_sound_list)
-    
-    def out(self):
-        for i in range(len(self.drop_sound_list)):
-            print(i, self.drop_sound_list[i], self.drop_sound_list[i][3])
-            self.drop_sound_list[i][1].out()
-            self.drop_sound_list[i][0].play()
-            time.sleep(self.drop_sound_list[i][3]+.1)
-            self.drop_sound_list[i][0].stop()
-            time.sleep(.1)
-
-
-def main_backingtrack():
-    
-    lydian_dictionary = {
-        0: 440.0000,
-        1: 493.8833,
-        2: 554.3653,
-        3: 622.2540,
-        4: 659.2551,
-        5: 739.9888,
-        6: 830.6094
-    }
-
-    phrygian_dictionary = {
-        0: 329.628,
-        1: 349.228,
-        2: 391.995,
-        3: 440.000,
-        4: 493.883,
-        5: 523.251,
-        6: 587.330
-    }
-
-    phrygian_dictionary2 = {
-        0: 329.628/2,
-        1: 349.228/2,
-        2: 391.995/2,
-        3: 440.000/2,
-        4: 493.883/2,
-        5: 523.251/2,
-        6: 587.330/2
-    }
-
-    lydian_dictionary2 = {
-        0: 440.0000/2,
-        1: 493.8833/2,
-        2: 554.3653/2,
-        3: 622.2540/2,
-        4: 659.2551/2,
-        5: 739.9888/2,
-        6: 830.6094/2
-    }
-    
-    lydian_list = []
-    phrygian_list = []
-    dorian_list = [261.626, 293.665, 331.127, 349.228, 291.995, 440.000, 466.164]
-    dorian_list_up = [293.665, 329.628, 349.228, 391.995, 440, 493.883, 523.251]
-
-    for i in lydian_dictionary2:
-        lydian_list.append(lydian_dictionary2[i])
-
-    for i in phrygian_dictionary2:
-        phrygian_list.append(phrygian_dictionary2[i])
-
-    lfo = Sine(.2, 0, .075, .075)
-    lfo2 = Sine(.1, 0, .075, .075)
+def main_backingtrack(lfo, lfo2):
 
     """
     INTRODUCTION
@@ -104,7 +16,8 @@ def main_backingtrack():
     fader_introduction = Fader(fadein=0.1, fadeout=10, dur=0, mul=.2).play()
     freqs_introduction = lydian_list
     rnd_intro = Choice(choice=freqs_introduction, freq=[8,7])
-    sine_introduction = SineLoop(freq=rnd_intro, feedback=lfo, mul=fader_introduction).out()
+    sine_introduction = SineLoop(freq=rnd_intro, feedback=lfo, mul=fader_introduction)
+    sine_introduction.out()
 
     print('sleep 10')
     time.sleep(10)
