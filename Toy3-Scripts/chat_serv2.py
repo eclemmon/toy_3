@@ -1,8 +1,18 @@
 #!/usr/bin/env python3
-
 """
-Server for multithreaded (asynchronous) chat application.
+This module accepts messages as a multithreaded (asynchronous) server for a chat room and
+controls the creation and playback of the water sounds from the laptop ensemble.
 """
+##############################################################
+__author__ = "Eric Lemmon"
+__copyright__ = "Copyright 2020, Eric Lemmon"
+__credits__ = "Eric Lemmon"
+__license__ = "GPL"
+__version__ = "1.0.1"
+__maintainer__ = "Eric Lemmon"
+__email__ = "eric.c.lemmon@stonybrook.edu"
+__status__ = "Production"
+##############################################################
 
 from socket import AF_INET, socket, SOCK_STREAM, gethostbyname, getfqdn
 from threading import Thread
@@ -23,6 +33,7 @@ def accept_incoming_connections():
         client.send(bytes("Welcome to the chat! Now type your name and press enter!", "utf8"))
         addresses[client] = client_address
         Thread(target=handle_client, args=(client,)).start()
+
 
 def handle_client(client):  # Takes client socket as argument.
     """
@@ -61,19 +72,15 @@ def broadcast(msg, prefix=""):
         sock.send(bytes(prefix, "utf8")+msg)
 
 
-""" BELOW HERE are the global variables """     
+# BELOW HERE are the global variables
 clients = {}
 addresses = {}
-
-
-""" Set only HOST and PORT according to your wifi/lan + Client settings"""
-
+# Set only HOST and PORT according to your wifi/lan + Client settings
 #HOST = '127.0.0.1'
 HOST = str(gethostbyname(getfqdn()))
 PORT = 33000
 BUFSIZ = 1024
 ADDR = (HOST, PORT)
-
 SERVER = socket(AF_INET, SOCK_STREAM)
 SERVER.bind(ADDR)
 

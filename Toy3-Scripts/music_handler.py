@@ -1,4 +1,17 @@
 #!/usr/bin/env python3
+"""
+This Module manages the main backing track for toy_3.
+"""
+##############################################################
+__author__ = "Eric Lemmon"
+__copyright__ = "Copyright 2020, Eric Lemmon"
+__credits__ = "Eric Lemmon"
+__license__ = "GPL"
+__version__ = "1.0.1"
+__maintainer__ = "Eric Lemmon"
+__email__ = "eric.c.lemmon@stonybrook.edu"
+__status__ = "Production"
+##############################################################
 
 from pyo import *
 import water_drop

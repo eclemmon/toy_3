@@ -1,7 +1,19 @@
 #!/usr/bin/env python3
+
 """
-This program builds a simple chat client from the  Tkinter GUI.
+This module builds a simple chat client out of the built-in Tkinter GUI package for python.
 """
+##############################################################
+__author__ = "Eric Lemmon"
+__copyright__ = "Copyright 2020, Eric Lemmon"
+__credits__ = "Eric Lemmon"
+__license__ = "GPL"
+__version__ = "1.0.1"
+__maintainer__ = "Eric Lemmon"
+__email__ = "eric.c.lemmon@stonybrook.edu"
+__status__ = "Production"
+##############################################################
+
 from socket import AF_INET, socket, SOCK_STREAM
 from threading import Thread
 import tkinter

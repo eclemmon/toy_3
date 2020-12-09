@@ -1,12 +1,21 @@
 #!/usr/bin/env python3
 """
-Water drop class
+This module is constructs the water droplet class that plays back synthesized water droplets in toy_3
 """
+##############################################################
+__author__ = "Eric Lemmon"
+__copyright__ = "Copyright 2020, Eric Lemmon"
+__credits__ = "Eric Lemmon"
+__license__ = "GPL"
+__version__ = "1.0.1"
+__maintainer__ = "Eric Lemmon"
+__email__ = "eric.c.lemmon@stonybrook.edu"
+__status__ = "Production"
+##############################################################
 
 from pyo import *
 import time
 import random
-import frequency_lists
 
 # Chat Server/Music Handler inserts path to water drop sample here.
 # water_drop_sf = "SAMPLE_PATH"

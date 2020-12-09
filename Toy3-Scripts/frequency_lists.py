@@ -1,4 +1,17 @@
 #!/usr/bin/env python3
+"""
+This Module is a repository of the different pitch materials used in toy_3.
+"""
+##############################################################
+__author__ = "Eric Lemmon"
+__copyright__ = "Copyright 2020, Eric Lemmon"
+__credits__ = "Eric Lemmon"
+__license__ = "GPL"
+__version__ = "1.0.1"
+__maintainer__ = "Eric Lemmon"
+__email__ = "eric.c.lemmon@stonybrook.edu"
+__status__ = "Production"
+##############################################################
 
 lydian_dictionary = {
     0: 440.0000,
