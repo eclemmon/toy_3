@@ -11,6 +11,7 @@ __version__ = "1.0.1"
 __maintainer__ = "Eric Lemmon"
 __email__ = "eric.c.lemmon@stonybrook.edu"
 __status__ = "Production"
+
 ##############################################################
 
 from pyo import *
@@ -20,6 +21,7 @@ import random
 # Chat Server/Music Handler inserts path to water drop sample here.
 # water_drop_sf = "SAMPLE_PATH"
 water_drop_sf = "/Users/ericlemmon/Documents/Compositions/electronic_works/toy_3/Toy3/Toy3-Samples/Water-Drop.wav"
+
 
 class Water_Drop(object):
     """

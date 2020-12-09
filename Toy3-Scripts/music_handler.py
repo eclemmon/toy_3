@@ -11,6 +11,7 @@ __version__ = "1.0.1"
 __maintainer__ = "Eric Lemmon"
 __email__ = "eric.c.lemmon@stonybrook.edu"
 __status__ = "Production"
+
 ##############################################################
 
 from pyo import *
@@ -257,7 +258,7 @@ def main_backingtrack(lfo_1, lfo_2):
                                bal=random.random(),
                                roomSize=random.random() * 4)
 
-    ### INITIALIZE SECTION CONTROL ###
+    # INITIALIZE SECTION CONTROL
     introduction(fader_introduction, sine_introduction)
     section_1(fader_introduction, fader_section_1_1, sine_section_1)
     section_2(fader_section_1_1, fader_section_2_1, fader_section_2_2, sine_section_2_1, sine_section_2_2)

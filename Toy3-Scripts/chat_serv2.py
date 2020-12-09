@@ -17,7 +17,7 @@ __status__ = "Production"
 from socket import AF_INET, socket, SOCK_STREAM, gethostbyname, getfqdn
 from threading import Thread
 from music_handler import *
-from water_drop import *
+import water_drop
 import pyo
 import time
 
@@ -58,9 +58,10 @@ def handle_client(client):  # Takes client socket as argument.
             break
         else:
             broadcast(msg, name+": ")
-            message_water = Water_Drop(msg.decode("utf-8"), water_drop_sf)
+            message_water = water_drop.Water_Drop(msg.decode("utf-8"), water_drop.water_drop_sf)
             message_water.out()
             print("Message: ", msg.decode("utf-8"))
+
 
 def broadcast(msg, prefix=""):
     """
@@ -76,7 +77,7 @@ def broadcast(msg, prefix=""):
 clients = {}
 addresses = {}
 # Set only HOST and PORT according to your wifi/lan + Client settings
-#HOST = '127.0.0.1'
+# HOST = '127.0.0.1'
 HOST = str(gethostbyname(getfqdn()))
 PORT = 33000
 BUFSIZ = 1024
@@ -88,7 +89,7 @@ if __name__ == "__main__":
     SERVER.listen(5)
     print("Waiting for connection...")
     print(HOST)
-    #Start main track here
+    # Start main track here
     s = pyo.Server(sr=48000, nchnls=8, buffersize=512, duplex=1).boot()
     s.start()
     ACCEPT_THREAD = Thread(target=accept_incoming_connections)

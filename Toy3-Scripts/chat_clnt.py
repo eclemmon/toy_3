@@ -18,6 +18,7 @@ from socket import AF_INET, socket, SOCK_STREAM
 from threading import Thread
 import tkinter
 
+
 def receive():
     """
     This function handles the receiving of messages in the chat server.
@@ -51,9 +52,9 @@ def on_closing(event=None):
     my_msg.set("{quit}")
     send()
 
+
 top = tkinter.Tk()
 top.title("Chatter")
-
 messages_frame = tkinter.Frame(top)
 my_msg = tkinter.StringVar()  # For the messages to be sent.
 my_msg.set("Type your messages here.")
@@ -63,7 +64,7 @@ msg_list = tkinter.Listbox(messages_frame, height=15, width=50, yscrollcommand=s
 scrollbar.pack(side=tkinter.RIGHT, fill=tkinter.Y)
 msg_list.pack(side=tkinter.LEFT, fill=tkinter.BOTH)
 msg_list.pack(fill="both", expand=True)
-messages_frame.pack(fill="both", expand=True, padx=(15,0), pady=10)
+messages_frame.pack(fill="both", expand=True, padx=(15, 0), pady=10)
 
 entry_field = tkinter.Entry(top, textvariable=my_msg)
 entry_field.bind("<Return>", send)
@@ -73,7 +74,7 @@ send_button.pack()
 
 top.protocol("WM_DELETE_WINDOW", on_closing)
 
-#----Now comes the sockets part----
+# ----Now comes the sockets part----
 HOST = input('Enter host: ')
 PORT = input('Enter port: ')
 if not PORT:
