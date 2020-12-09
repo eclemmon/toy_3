@@ -271,7 +271,7 @@ if __name__ == "__main__":
     # water_drop2 = water_drop.Water_Drop('aaaa sdhjhf sdhjdsu', water_drop.water_drop_sf)
     # water_drop2.out()
 
-    time.sleep(5)
+    time.sleep(5)  # Some sleep time to the chat server and music handler can switch to their own chat window.
     main_backingtrack(lfo, lfo2)
 
     s.stop()
