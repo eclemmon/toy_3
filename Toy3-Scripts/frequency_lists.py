@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 lydian_dictionary = {
     0: 440.0000,
     1: 493.8833,
