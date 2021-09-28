@@ -2,8 +2,7 @@
 
 **About:**
 
-Toy3 is an algorithmically generated computer music work that was composed for Stony Brook
-University’s Laptop Ensemble, SynthBeats, to be presented alongside a film graphically rendered
+toy_3 is an algorithmically generated computer music work that was composed for Ensemble Decipher, to be presented alongside a film graphically rendered
 by the K computer at the RIKEN Center for Computational Science for Hideo Sekino. The music
 generating program utilizes a hard-coded formal structure to synthesize a sequence of sections
 evocative of some of the imagery in the film, while at the same time, members of the laptop
