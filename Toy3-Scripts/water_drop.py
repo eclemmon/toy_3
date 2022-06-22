@@ -15,12 +15,12 @@ __status__ = "Production"
 ##############################################################
 
 from pyo import *
+import os
 import time
 import random
 
 # Chat Server/Music Handler inserts path to water drop sample here.
-# water_drop_sf = "SAMPLE_PATH"
-water_drop_sf = "/Users/ericlemmon/Documents/Compositions/electronic_works/toy_3/Toy3/Toy3-Samples/Water-Drop.wav"
+water_drop_sf = os.path.abspath(__file__ + "/../../") + "/Toy3-Samples/Water-Drop.wav"
 
 
 class Water_Drop(object):
