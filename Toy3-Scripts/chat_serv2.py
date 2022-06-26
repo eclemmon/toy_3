@@ -78,7 +78,9 @@ clients = {}
 addresses = {}
 # Set only HOST and PORT according to your wifi/lan + Client settings
 # HOST = '127.0.0.1'
-HOST = str(gethostbyname(getfqdn()))
+print(getfqdn())
+HOST = gethostbyname(getfqdn())
+# HOST = gethostbyname("")
 PORT = 33000
 BUFSIZ = 1024
 ADDR = (HOST, PORT)
